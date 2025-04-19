@@ -181,6 +181,3 @@ You should see a `EXTERNAL-IP` from your defined MetalLB pool (`192.168.0.230-23
 - [Kind Networking](https://kind.sigs.k8s.io/docs/user/loadbalancer/)
 ```
 
----
-
-Let me know if you want this blog styled for a specific platform (e.g., Dev.to, Hugo, Jekyll), or exported as `.md`.
