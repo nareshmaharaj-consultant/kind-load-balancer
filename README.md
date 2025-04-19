@@ -1,23 +1,26 @@
-Here's a clean, well-structured blog post in **Markdown format** for setting up a LoadBalancer in `kind` using MetalLB:
-
----
-
-```markdown
 # Setting Up a Load Balancer in `kind` with MetalLB
 
-> Easily enable `LoadBalancer` services in your local Kubernetes `kind` cluster using [MetalLB](https://metallb.universe.tf/installation/)
+> Use MetalLB to enable `LoadBalancer`-type services in your local `kind` Kubernetes cluster.
 
 ---
 
-## 🔧 1. Enable Strict ARP Mode (for IPVS mode only)
+## 🧾 Prerequisites
 
-If your cluster uses `kube-proxy` in **IPVS mode**, Kubernetes **v1.14.2+** requires **strict ARP mode** to be enabled.
+- You have a working `kind` cluster.
+- `kubectl` is configured to talk to it.
+- Your cluster nodes are using a **local network** that supports Layer 2 (e.g., 192.168.0.0/24).
 
-Edit the `kube-proxy` config:
+---
+
+## 1️⃣ Enable Strict ARP Mode (for IPVS only)
+
+If you're using `kube-proxy` in **IPVS mode** (common in custom clusters), Kubernetes v1.14.2+ requires `strictARP: true`.
+
+### Option A: Manually edit the config
 
 ```bash
 kubectl edit configmap -n kube-system kube-proxy
-```
+
 
 Set the following under the `ipvs` section:
 
