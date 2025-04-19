@@ -20,6 +20,7 @@ If you're using `kube-proxy` in **IPVS mode** (common in custom clusters), Kuber
 
 ```bash
 kubectl edit configmap -n kube-system kube-proxy
+```
 
 
 Set the following under the `ipvs` section:
